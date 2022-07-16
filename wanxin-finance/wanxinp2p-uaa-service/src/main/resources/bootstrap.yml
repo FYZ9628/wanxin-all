@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 45a81899-43c9-4b21-8370-2b196bc75ec4
+        group: DEFAULT_GROUP
+        file-extension: properties
+        prefix: uaa-service

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.13.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.wanxin</groupId>
+    <artifactId>wanxin-finance</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>wanxin-finance</name>
+    <description>wanxin-finance</description>
+
+    <modules>
+        <module>wanxinp2p-api</module>
+        <module>wanxinp2p-common</module>
+        <module>wanxinp2p-consumer-service</module>
+        <!--        <module>wanxinp2p-discover-server</module>-->
+        <module>wanxinp2p-gateway-server</module>
+        <module>wanxinp2p-account-service</module>
+        <module>wanxinp2p-uaa-service</module>
+        <module>wanxinp2p-depository-agent-service</module>
+        <module>wanxinp2p-transaction-service</module>
+        <module>wanxinp2p-content-search-service</module>
+        <module>wanxinp2p-repayment-service</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--跳过测试-->
+        <skipTests>true</skipTests>
+
+        <spring.cloud.version>Greenwich.SR6</spring.cloud.version>
+        <apollo.client.version>1.3.0</apollo.client.version>
+        <hmily.version>2.1.1</hmily.version>
+        <spring.seata.version>2.2.5.RELEASE</spring.seata.version>
+        <seata.version>1.4.2</seata.version>
+        <kryo.version>4.0.2</kryo.version>
+<!--        <elastic.job.starter.version>3.0.0-RC1</elastic.job.starter.version>-->
+        <elastic.job.starter.version>3.0.1</elastic.job.starter.version>
+        <xxl.job.version>2.3.0</xxl.job.version>
+        <swagger.version>2.9.2</swagger.version>
+        <javax.servlet.api.version>3.1.0</javax.servlet.api.version>
+        <javax.interceptor.api.version>1.2</javax.interceptor.api.version>
+        <fastsjson.version>1.2.47</fastsjson.version>
+        <alibaba.druid.version>1.1.22</alibaba.druid.version>
+        <mybatis.plus.version>3.1.2</mybatis.plus.version>
+        <mybatis.jsr.version>1.0.2</mybatis.jsr.version>
+        <sharding.jdbc.version>4.0.0-RC1</sharding.jdbc.version>
+        <okhttp.version>3.14.4</okhttp.version>
+<!--        <alibaba.sentinel.version>1.6.2</alibaba.sentinel.version>-->
+        <alibaba.sentinel.version>1.8.1</alibaba.sentinel.version>
+        <rocketmq.starter.version>2.0.4</rocketmq.starter.version>
+        <baidu.api.version>4.15.0</baidu.api.version>
+        <elasticsearch.version>7.5.0</elasticsearch.version>
+<!--        <elasticsearch.version>5.6.16</elasticsearch.version>-->
+        <sleuth.version>2.1.7.RELEASE</sleuth.version>
+        <zipkin.version>2.1.7.RELEASE</zipkin.version>
+    </properties>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- nacos的注册中心客户端依赖包 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>2.1.0.RELEASE</version>
+            </dependency>
+
+            <!--nacos的配置中心的依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>2.1.0.RELEASE</version>
+            </dependency>
+
+
+<!--            <dependency>-->
+<!--                <groupId>com.ctrip.framework.apollo</groupId>-->
+<!--                <artifactId>apollo-client</artifactId>-->
+<!--                <version>${apollo.client.version}</version>-->
+<!--            </dependency>-->
+
+            <!-- 分布式事务 -->
+            <dependency>
+                <groupId>org.dromara</groupId>
+                <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
+                <version>${hmily.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-boot-starter</artifactId>
+                        <groupId>org.springframework.boot</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-test</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>logback-core</artifactId>
+                        <groupId>ch.qos.logback</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>logback-classic</artifactId>
+                        <groupId>ch.qos.logback</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--  Java 对象序列化框架 -->
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
+
+            <!-- 分布式任务调度 -->
+            <dependency>
+                <groupId>org.apache.shardingsphere.elasticjob</groupId>
+                <artifactId>elasticjob-lite-core</artifactId>
+                <version>${elastic.job.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere.elasticjob</groupId>
+                <artifactId>elasticjob-lite-spring-boot-starter</artifactId>
+                <version>${elastic.job.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.interceptor</groupId>
+                <artifactId>javax.interceptor-api</artifactId>
+                <version>${javax.interceptor.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastsjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${alibaba.druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-typehandlers-jsr310</artifactId>
+                <version>${mybatis.jsr.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding.jdbc.version}</version>
+            </dependency>
+
+            <!-- http 网络请求库 -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-zuul-adapter</artifactId>
+                <version>${alibaba.sentinel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${alibaba.sentinel.version}</version>
+            </dependency>
+
+            <!--            <dependency>-->
+<!--                <groupId>com.alibaba.csp</groupId>-->
+<!--                <artifactId>sentinel-datasource-apollo</artifactId>-->
+<!--                <version>${alibaba.sentinel.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baidu.aip</groupId>
+                <artifactId>java-sdk</artifactId>
+                <version>${baidu.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>25.0-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>1.0.9.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>2.1.3.RELEASE</version>
+            </dependency>
+
+            <!-- 链路追踪  sleuth 和 zipkin     -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-sleuth</artifactId>
+                <version>${sleuth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- 编译 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 打包 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

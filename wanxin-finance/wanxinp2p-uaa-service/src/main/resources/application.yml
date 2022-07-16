@@ -1,0 +1,11 @@
+server:
+  port: 53020
+
+spring:
+  application:
+    name: uaa-service
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: 'off'
+  profiles:
+    active: dev

@@ -1,0 +1,17 @@
+技术	说明
+
+SpringBoot：2.1.13.RELEASE	容器+MVC框架
+SpringCloud：Greenwich.SR6	微服务
+SpringSecurity Oauth2：2.1.5.RELEASE	认证和授权框架
+Nocas：2.1.0.RELEASE	分布式配置中心
+MyBatisPlus：3.1.2	ORM框架
+Swagger-UI：2.9.2	文档生产工具
+Redis	分布式缓存
+MinIO	对象存储
+Elasticsearch：7.5  搜索引擎
+LogStash：7.5	日志收集工具
+xxl-job：2.3.0	任务调度
+elastic-job：3.0.1	任务调度
+RocketMQ：2.0.4	消息中间件
+Hmily：2.1.1	分布式事务框架
+ShardingSphere：4.0.0-RC1	分库分表中间件

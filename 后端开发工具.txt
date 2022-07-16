@@ -1,0 +1,8 @@
+工具	说明
+
+IDEA	开发IDE
+Another Redis Desktop	redis客户端连接工具
+Navicat	数据库连接工具
+Snipaste	屏幕截图工具
+Postman	API接口调试工具
+Typora	Markdown编辑器

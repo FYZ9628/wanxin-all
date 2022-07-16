@@ -1,0 +1,63 @@
+# -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53080
+app:
+  id: repayment-service
+#apollo:
+#  meta: http://127.0.0.1:8080
+#  bootstrap:
+#    enabled: true
+#    eagerLoad:
+#      enabled: true
+#    namespaces: micro_service.spring-boot-druid,application,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-feign,micro_service.spring-ribbon,micro_service.mybatis-plus,micro_service.spring-rocketmq
+
+logging:
+  config: classpath:log4j2-dev.xml
+
+# elastic-Job相关配置
+elasticjob:
+  # 注册中心
+  regCenter:
+    serverLists: localhost:2181
+    namespace: p2p-elastic-job
+    max-sleep-time-milliseconds: 60000  #超时连接时间 60 秒
+  jobs:
+    # 自定义job 作业
+    repaymentJob:
+      # 自定义的job类的路径
+      elasticJobClass: com.wanxin.repayment.job.RepaymentJob
+      cron: 0/5 * * * * ?
+      shardingTotalCount: 2
+      timeZone: GMT+08:00
+#      shardingItemParameters: 0=Beijing,1=Shanghai
+
+
+# xxl-job相关配置
+xxl:
+  job:
+    admin:
+      address: http://127.0.0.1:18020/xxl-job-admin
+    # 执行器token，非空时启用
+    accessToken: xxl.fyz
+    # 执行器app名称
+    executor:
+      appName: wanxinp2p
+      # 执行器注册地址，为空时使用内嵌服务 “IP:PORT” 作为注册地址
+      address:
+      # 执行器IP
+      ip:
+      # 执行器端口
+      port: 18022
+      # 执行器日志文件存储路径，为空则使用默认路径
+      logpath: /data/logs/xxl-job/executor
+      # 执行器日志保存天数
+      logretentiondays: 30
+
+
+
+# 腾讯云秘钥(默认没有开启秘钥)
+# 发送短信的
+sms:
+  qcloud:
+    appId: 12345678
+    appKey: 'yueliminvc888888ddddd'
+    templateId: '123456'
+    sign: 'fake'

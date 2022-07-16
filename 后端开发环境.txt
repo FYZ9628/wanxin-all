@@ -1,0 +1,14 @@
+工具	版本号
+
+JDK	1.8
+Maven     3.8.1
+MySQL	8.0
+Nacos	2.0.1
+Redis	3.2（windows版）
+RocketMQ	4.9.3
+Elasticsearch	7.12.1
+Logstash	7.12.1
+Kibana	7.12.1
+elasticsearch-head   
+Zookeeper	3.7.0
+xxl-job      2.3.0

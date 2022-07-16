@@ -1,0 +1,168 @@
+/*
+ Navicat MySQL Data Transfer
+
+ Source Server         : mysql8
+ Source Server Type    : MySQL
+ Source Server Version : 80011
+ Source Host           : localhost:3336
+ Source Schema         : p2p_account
+
+ Target Server Type    : MySQL
+ Target Server Version : 80011
+ File Encoding         : 65001
+
+ Date: 16/07/2022 11:40:31
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for account
+-- ----------------------------
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE `account`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `USERNAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `MOBILE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
+  `PASSWORD` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `SALT` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '加密盐',
+  `STATUS` tinyint(1) NULL DEFAULT NULL COMMENT '账号状态',
+  `DOMAIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1543856026174988289 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '账号信息' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of account
+-- ----------------------------
+INSERT INTO `account` VALUES (2001, '15378791981', '15378791981', '84ca7ae9e232f8ad4de6604c61668b465b15e8b77e254 14e', NULL, NULL, 'c');
+INSERT INTO `account` VALUES (2002, '15378791982', '15378791982', 'a7926810be7659b025958b43469126895c6299757f39c d32', NULL, NULL, 'c');
+INSERT INTO `account` VALUES (2003, '15378791983', '15378791983', '349966a4092c00000f57a483267280d3c228b5eb8a90b 80b', NULL, NULL, 'c');
+INSERT INTO `account` VALUES (2004, '15378791984', '15378791984', 'e9552ff2707ad9204121408ae84b8617f62948752403a f22', NULL, NULL, 'c');
+INSERT INTO `account` VALUES (2005, '15378791985', '15378791985', 'e9c390d3ac0116940034b97974b08bd35051b03f3c508 87f', NULL, NULL, 'c');
+INSERT INTO `account` VALUES (1129286208275427330, 'admin', '15378791911', 'c9ed3d27e29562391682311cb17f6283ad8f04a86fc0a474', NULL, 1, 'b');
+INSERT INTO `account` VALUES (1503045000269778946, '15277000557', '15277000557', '328965634d3e097267979c2295b10017002d66037118d20b', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1532355272385880066, NULL, '18278539579', 'f8a418884564a2361c02781229e89ea5542476ea38512531', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1532356389245149185, 'C7596A9C17FF4DE88C6CD8DBDF676C66', '18278539578', '28f68ef10420692574067c8833a57b934e34861b7885806e', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1532404895758540801, '3398E3F06F7C4DE7A6A467C8613DEE87', '18278539577', '564689892828c7298e316b6811080471668c07638489b150', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1533783403374104577, '18278539599', '18278539599', '64f98703d59444101e13c03eb95b86933188f7ba65f9eb42', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1534124394325045250, '9C31715548B74A3EB32D2CAC7E725E90', '18278539576', '27fe48f29649275833a7a12af2207ff53b6914c318385489', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1534180219655647233, '48150B5EAD884FC8BF4DB5CD69522458', '18278539575', '881d1d846d84e13078256727598b6ea79f3ba1c776178e10', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1535171644564213761, 'FAF352335CBA40339DD52F530DC8A1AF', '18278539574', 'c59258e2106298006067a349673453c1934c632888e2ce94', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1536355819262582786, 'EE693BEF0B74494696C6495D233A9AE8', '18278539572', '23be08c11b59f0b74398917161ca3165d29783529352061f', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541683851863019522, 'A7E121E3C9004A618CECED54A738697A', '15278538579', 'b58d3cf8c272c9624f34e971454486d39d57d6f56dc0f30f', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684143010631681, '9EFFBE1BCDD7477E84D3E21157D9CDDA', '15278538578', '345f6d41358e37c640577a7bf52f49868a19f45029658382', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684252981088258, 'E9F7A2001BE94FA898DEDD0A727436A9', '15278538577', 'f77109b2bb49653756b83c7713ed0bd1528ef9055a14027e', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684352235098114, 'FDACFBA4C3E94C18BAF463B47C7A6BC9', '15278538576', '05a937571a76d6fd6e58ff84972c18c90e24d46833b6ef83', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684472758423554, 'EF7413C34D734798A401CC77DA511B54', '15278538575', '79af4a764321575e8a665545460c5f28284281514269fa7a', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684568032038913, 'C5B228AA7CE74FE4B1FB67EA760ED7D4', '15278538574', 'b8555054304cc2230e23fb0cb9c629781b1555d326f8e568', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684648470401025, '86A627ED69B64F2DB5356B4AE16A7063', '15278538573', 'c61a54b1d89af9a198857e59657080a7a11a434120d00b0c', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541684939718676481, 'E75B462D9DA74B52BF7577C99E381BA4', '15278538572', 'a26b42e0af0bc5786f27926809335b987a7d09f76e921122', NULL, 0, 'c');
+INSERT INTO `account` VALUES (1541685014075297794, 'F07411A40D3343C994729408C978C80C', '15278538571', 'c51c0b60910ab0d28a15b23fa52e63b57d6e64b74f334f75', NULL, 0, 'c');
+
+-- ----------------------------
+-- Table structure for account_role
+-- ----------------------------
+DROP TABLE IF EXISTS `account_role`;
+CREATE TABLE `account_role`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ACCOUNT_ID` bigint(20) NULL DEFAULT NULL COMMENT '账号标识',
+  `ROLE_ID` bigint(20) NULL DEFAULT NULL COMMENT '角色标识',
+  PRIMARY KEY (`ID`) USING BTREE,
+  INDEX `Fk_Reference_15`(`ACCOUNT_ID`) USING BTREE,
+  INDEX `FK-Reference_16`(`ROLE_ID`) USING BTREE,
+  CONSTRAINT `FK-Reference_16` FOREIGN KEY (`ROLE_ID`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `Fk_Reference_15` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '账号-角色关系' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of account_role
+-- ----------------------------
+INSERT INTO `account_role` VALUES (1, 1129286208275427330, 1);
+
+-- ----------------------------
+-- Table structure for menu
+-- ----------------------------
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `PARENT_ID` bigint(20) NULL DEFAULT NULL COMMENT '父id',
+  `TITLE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜单标题',
+  `URL` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '链接url',
+  `ICON` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标',
+  `SORT` int(11) NOT NULL COMMENT '排序',
+  `COMMENT` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '说明',
+  `STATUS` int(11) NOT NULL COMMENT '状态',
+  `PRIVILEGE_CODE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '绑定权限',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of menu
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for privilege
+-- ----------------------------
+DROP TABLE IF EXISTS `privilege`;
+CREATE TABLE `privilege`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限名称',
+  `CODE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限编码',
+  `PRIVILEGE_GROUP_ID` bigint(20) NULL DEFAULT NULL COMMENT '所属权限组id',
+  PRIMARY KEY (`ID`) USING BTREE,
+  INDEX `FK_Reference_6`(`PRIVILEGE_GROUP_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of privilege
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for privilege_group
+-- ----------------------------
+DROP TABLE IF EXISTS `privilege_group`;
+CREATE TABLE `privilege_group`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `PARENT_ID` bigint(20) NULL DEFAULT NULL COMMENT '父id',
+  `NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限组名称',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限组' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of privilege_group
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色名称',
+  `CODE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色编码',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES (1, 'b端用户', 'admin');
+INSERT INTO `role` VALUES (2, 'c端用户', 'user');
+
+-- ----------------------------
+-- Table structure for role_privilege
+-- ----------------------------
+DROP TABLE IF EXISTS `role_privilege`;
+CREATE TABLE `role_privilege`  (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ROLE_ID` bigint(20) NULL DEFAULT NULL COMMENT '角色id',
+  `PRIVILEGE_ID` bigint(20) NULL DEFAULT NULL COMMENT '权限id',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色-权限关系' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of role_privilege
+-- ----------------------------
+
+SET FOREIGN_KEY_CHECKS = 1;

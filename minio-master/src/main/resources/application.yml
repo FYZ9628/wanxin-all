@@ -1,0 +1,26 @@
+server:
+  port: 56090
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+  use-forward-headers: true
+  servlet:
+    context-path: /minio
+
+spring:
+  application:
+    name: minio
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: 'off'
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  profiles:
+    active: dev
+
+# 日志配置文件
+logging:
+  config: classpath:log4j2.xml

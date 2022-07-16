@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="180" packages="">
+    <properties>
+        <property name="prjname">${project.name}</property>
+        <property name="logdir">logs</property>
+        <property name="PATTERN">
+            [${project.name}][${project.port}] %date{YYYY-MM-dd HH:mm:ss,SSS} %highlight{%level} [%thread][%file:%line] - %msg%n%throwable
+        </property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN}"/>
+        </Console>
+
+        <RollingFile
+                name="ErrorAppender"
+                fileName="${logdir}/${prjname}_error.log"
+                filePattern="${logdir}/$${date:yyyy-MM-dd}/${prjname}_error.%d{yyyy-MM-dd-HH}.log"
+                append="true">
+            <PatternLayout pattern="${PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <!-- 每隔一个小时存生成一个文件保存日志 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 每个日志文件最大可存数据量的大小 -->
+                <!--                <SizeBasedTriggeringPolicy size="10 MB"/>-->
+            </Policies>
+
+            <!-- DefaultRolloverStrategy属性，保存日志文件的最大个数，如不设置，
+            则默认为最多同一文件夹下7个文件，大于此值会删除旧的日志文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="24"/>
+        </RollingFile>
+
+        <RollingFile
+                name="DebugAppender"
+                fileName="${logdir}/${prjname}_info.log"
+                filePattern="${logdir}/$${date:yyyy-MM-dd}/${prjname}_info.%d{yyyy-MM-dd-HH}.log"
+                append="true">
+            <PatternLayout pattern="${PATTERN}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <!-- 每隔一个小时存生成一个文件保存日志 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 每个日志文件最大可存数据量的大小 -->
+                <!--                <SizeBasedTriggeringPolicy size="10 MB"/>-->
+            </Policies>
+
+            <!-- DefaultRolloverStrategy属性，保存日志文件的最大个数，如不设置，
+            则默认为最多同一文件夹下7个文件，大于此值会删除旧的日志文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+
+        <!--异步appender-->
+        <Async name="AsyncAppender" includeLocation="true">
+            <AppenderRef ref="ErrorAppender"/>
+            <AppenderRef ref="DebugAppender"/>
+        </Async>
+    </Appenders>
+
+    <Loggers>
+        <!--过滤掉spring一些无用的debug信息-->
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="springfox" level="INFO"/>
+        <logger name="org.apache.http" level="INFO"/>
+
+        <Root level="INFO" includeLocation="true">
+            <AppenderRef ref="AsyncAppender"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

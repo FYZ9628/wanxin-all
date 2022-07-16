@@ -1,0 +1,63 @@
+# -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+app:
+  id: gateway-server
+#apollo:
+#  meta: http://127.0.0.1:8080
+#  bootstrap:
+#    enabled: true
+#    eagerLoad:
+#      enabled: true
+#    namespaces: application,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-hystrix,micro_service.spring-ribbon,micro_service.spring-boot-redis
+
+logging:
+  config: classpath:log4j2-dev.xml
+
+
+#  [
+#    {
+#                 "resource": "uaa-service", //对应zuul的routes，这里的资源指的是统一认证服务
+#                 "resourceMode": 0,//网关模式
+#                 "grade": 1,//QPS限流模式
+#      "c		"ount": 2,
+#      // 上限值
+#                 "intervalSec": 1,//统计时间窗口，单位是秒，默认是1秒
+#                 "controlBehavior": 0,//流量控制效果（直接拒绝、Warm Up、匀速排队等待）
+#                 "burst": 0,//应对突发请求时额外允许的请求数目
+#                 "maxQueueingTimeoutMs": 500,//匀速排队模式下的最长排队时间，单位是毫秒，仅在匀速排队 模式下生效
+#                 "paramItem": {
+#                                //动态参数，目前不需要
+#                 }
+#    }
+#  ]
+
+
+#  [{"resource": "uaa-service","resourceMode": 0,"grade": 1,"count": 2,"intervalSec": 1,"controlBehavior": 0,"burst": 0,"maxQueueingTimeoutMs": 500,"paramItem": {}}]
+
+# https://www.bilibili.com/video/BV1Pv4y1f7CE?p=105&vd_source=219f60c968c316848d9c742fc458159e
+
+# https://sentinelguard.io/zh-cn/docs/api-gateway-flow-control.html
+
+# sentinel 相关配置，流量控制，连接控制面板，并从nacos中读取配置信息，但是还没有实现控制面板同步数据到nacos中
+spring:
+  cloud:
+    sentinel:
+      filter:
+        enable: false # sentinel不记录网关的日志
+      transport:
+        # sentinel控制面板
+        dashboard: 127.0.0.1:9999       # sentinel注册地址
+      datasource:
+        ds:
+          nacos:
+            # nacos地址
+            server-addr: 127.0.0.1:8848
+            # 命名空间
+            namespace: 45a81899-43c9-4b21-8370-2b196bc75ec4
+            # nacos 分组
+            group-id: DEFAULT_GROUP
+            # nacos中配置文件的data-id
+            data-id: zuul-sentinel
+            # 规则类型 流控
+            rule-type: flow
+            # 读取培训文件类型为json
+            data-type: json

@@ -1,0 +1,18 @@
+
+.m-input-view {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	flex: 1;
+	padding: 0 10rpx;
+}
+.m-input-input {
+	flex: 1;
+	font-size: 28rpx;
+	width: 100%;
+}
+.m-input-icon {
+	width: 20px;
+}
+
